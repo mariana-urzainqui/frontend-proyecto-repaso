@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { GET, getAuthenticatedHeaders } from '../fetching/http.fetching'
+import ENVIRONMENT from '../environment'
 
 const useProductDetail = (product_id) => {
     const [product, setProduct] = useState(null)
@@ -15,7 +16,7 @@ const useProductDetail = (product_id) => {
 
         const fetchProduct = async () => {
             try {
-                const response = await GET(`http://localhost:3000/api/products/${product_id}`, {
+                const response = await GET(`${ENVIRONMENT.URL_BACKEND}/api/products/${product_id}`, {
                     headers: getAuthenticatedHeaders(),
                 })
 

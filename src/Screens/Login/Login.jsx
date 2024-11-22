@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { getUnauthenticatedHeaders, POST } from '../../fetching/http.fetching'
 import useForm from '../../Hooks/useForm'
 import useMessages from '../../Hooks/useMessages'
+import ENVIRONMENT from '../../environment'
 
 const Login = () => {
     const navigate = useNavigate()
@@ -24,7 +25,7 @@ const Login = () => {
         event.preventDefault()
         clearMessages()
         try {
-            const response = await POST('http://localhost:3000/api/auth/login', {
+            const response = await POST(`${ENVIRONMENT.URL_BACKEND}/api/auth/login`, {
                 body: form_values_state,  
                 headers: getUnauthenticatedHeaders() 
             })

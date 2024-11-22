@@ -2,6 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import useForm from '../../Hooks/useForm'
 import useMessages from '../../Hooks/useMessages'
 import { PUT } from '../../fetching/http.fetching'
+import ENVIRONMENT from '../../environment'
 
 
 const ResetPassword = () => {
@@ -22,7 +23,7 @@ const ResetPassword = () => {
 
         try {
             const response = await PUT(
-                `http://localhost:3000/api/auth/reset-password/${reset_token}`, 
+                `${ENVIRONMENT.URL_BACKEND}/api/auth/reset-password/${reset_token}`, 
                 { password: form_values_state.password } 
             )
 

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import useForm from '../../Hooks/useForm'
 import { getUnauthenticatedHeaders, POST } from '../../fetching/http.fetching'
 import useMessages from '../../Hooks/useMessages'
+import ENVIRONMENT from '../../environment'
 
 
 const Register = () => {
@@ -27,7 +28,7 @@ const Register = () => {
         event.preventDefault()
         clearMessages()
         try {
-            const response = await POST('http://localhost:3000/api/auth/register', {
+            const response = await POST(`${ENVIRONMENT.URL_BACKEND}/api/auth/register`, {
                 body: form_values_state,  
                 headers: getUnauthenticatedHeaders()
             })

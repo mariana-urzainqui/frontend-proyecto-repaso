@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import useForm from '../../Hooks/useForm'
 import useMessages from '../../Hooks/useMessages'
 import { getUnauthenticatedHeaders, POST } from '../../fetching/http.fetching'
+import ENVIRONMENT from '../../environment'
 
 const ForgotPassword = () => {
     const { form_values_state, handleChangeInputValue } = useForm({email: ''})
@@ -20,7 +21,7 @@ const ForgotPassword = () => {
         event.preventDefault()
         clearMessages()
         try {
-            const response = await POST('http://localhost:3000/api/auth/forgot-password', {
+            const response = await POST(`${ENVIRONMENT.URL_BACKEND}/api/auth/forgot-password`, {
                 body: form_values_state, 
                 headers: getUnauthenticatedHeaders()
             })
