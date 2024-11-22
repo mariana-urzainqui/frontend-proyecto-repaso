@@ -18,6 +18,7 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/forgot-password' element={<ForgotPassword />} />
         <Route path='/reset-password/:reset_token' element={<ResetPassword />} />
+        <Route path="/verify/:verificationToken" element={<VerifyEmail />} />
         <Route element={<ProtectedRoute />}>
           <Route path='/home' element={<HomeScreen />} />
           <Route path='/product/new' element={<CreateProduct />} />
